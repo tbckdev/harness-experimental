@@ -57,3 +57,22 @@
   - yes, on protocol-like docs and templates added in this change set
 - Migration follow-up required:
   - future historical files may need local interpretation against new template shapes when touched
+
+## 2026-05-08 — Bootstrap Installer Added (`v0.1.1`)
+
+- Version scope: `v0.1.1` bootstrap installer for the current documentation baseline
+- Affected files:
+  - `README.md`
+  - `docs/TEST_MATRIX.md`
+  - `docs/stories/epics/E01-harness-bootstrap/US-001-install-harness-v0.1-into-target-repo.md`
+  - `docs/stories/epics/E01-harness-bootstrap/INSTALLER_CONTRACT.md`
+  - `docs/validation/VAL-20260508-installer-v0.1.md`
+  - `scripts/install-bootstrap.sh`
+- Why change happened:
+  - add first reusable bootstrap automation for installing the current harness baseline into another repository
+- Friction removed:
+  - manual copying of harness baseline files into target repositories
+- File-level version markers changed:
+  - no new version bumps to existing core contract files
+- Migration follow-up required:
+  - no immediate migration; future remote-source or protected-path merge modes can land as later stories

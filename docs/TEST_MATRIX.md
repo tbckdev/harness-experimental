@@ -51,6 +51,12 @@ Use the lightest honest proof that matches repository reality.
 Add rows only when accepted product or harness behavior exists and can be linked
 to a real source doc or operating doc.
 
+
+| `INS-001` | installer copies only approved harness baseline files, including non-sandbox examples | `docs/stories/epics/E01-harness-bootstrap/US-001-install-harness-v0.1-into-target-repo.md` | `US-001` | `normal` | installer reviewer | `document_review` | `planned` | `not_yet_proven` | `none` | file allowlist defined in contract but not yet implemented |
+| `INS-002` | installer stops on protected target paths before writing | `docs/stories/epics/E01-harness-bootstrap/US-001-install-harness-v0.1-into-target-repo.md` | `US-001` | `normal` | installer reviewer | `document_review` | `planned` | `not_yet_proven` | `none` | protected-path logic not yet implemented |
+| `INS-003` | installer dry-run reports planned operations, including force backups, without writing files | `docs/stories/epics/E01-harness-bootstrap/US-001-install-harness-v0.1-into-target-repo.md` | `US-001` | `normal` | installer reviewer | `document_review` | `planned` | `not_yet_proven` | `none` | dry-run output contract not yet implemented |
+| `INS-004` | installer excludes local-only planning and sandbox artifacts while preserving upstream-style force safety for non-protected files | `docs/stories/epics/E01-harness-bootstrap/US-001-install-harness-v0.1-into-target-repo.md` | `US-001` | `normal` | installer reviewer | `document_review` | `planned` | `not_yet_proven` | `none` | exclusion and overwrite behavior agreed but not yet implemented |
+
 ## Row Creation Rules
 
 Create or update a row when:
