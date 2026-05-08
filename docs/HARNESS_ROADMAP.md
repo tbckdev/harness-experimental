@@ -3,7 +3,7 @@
 Version: 0.1  
 Status: active
 
-This document summarizes harness maturity stages after the initial upgrade plan.
+This document summarizes harness maturity stages after the initial upgrade from thin v0 guidance to the `harness-upgrade-v0.1` baseline.
 
 ## v0
 

@@ -9,7 +9,7 @@ It exists to help humans and agents turn incoming prompts or specifications into
 small, reviewable, and provable work without pretending the repository already
 contains product truth that does not yet exist.
 
-Harness v0 does not ship application code. It ships operating rules,
+Harness `v0.1` still does not ship application code. It ships operating rules,
 templates, and control documents that define how a future project should be
 shaped before implementation expands.
 
@@ -32,9 +32,9 @@ Every task should improve at least one of these surfaces:
 2. Harness delta: workflow rules, templates, validation controls, glossary,
    roadmap, or backlog proposals.
 
-## Harness v0 Scope
+## Harness v0.1 Scope
 
-Harness v0 includes:
+Harness `v0.1` includes:
 
 - repository entrypoint rules in `AGENTS.md`
 - collaboration and operating guidance in `docs/HARNESS.md`
@@ -43,9 +43,9 @@ Harness v0 includes:
 - proof tracking policy in `docs/TEST_MATRIX.md`
 - reusable templates under `docs/templates/`
 - harness growth tracking in `docs/HARNESS_BACKLOG.md`
-- roadmap and planning artifacts under `plans/harness-upgrade/`
+- roadmap, history, and changelog artifacts under `plans/harness-upgrade/`
 
-Harness v0 deliberately excludes:
+Harness `v0.1` deliberately excludes:
 
 - project-specific source code
 - preselected framework or stack
@@ -229,7 +229,7 @@ Possible proof levels:
 - end-to-end proof
 - platform proof
 
-Harness v0 often stops at document-review proof because no application surface
+The current repository often stops at document-review proof because no application surface
 exists yet. Do not fake higher-level proof.
 
 If a later project introduces executable surfaces, update the test matrix and
