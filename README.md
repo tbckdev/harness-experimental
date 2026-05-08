@@ -2,6 +2,8 @@
 
 This repository is a documentation-first collaboration harness.
 
+It is developed with love ❤️ from ideas by [hoangnb24](https://github.com/hoangnb24).
+
 It is not yet a product implementation repository. It exists to turn future raw
 specifications and prompts into:
 
