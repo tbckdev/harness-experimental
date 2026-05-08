@@ -15,8 +15,10 @@ specifications and prompts into:
 
 ## Current State
 
-The repository now uses the `harness-upgrade-v0.1` documentation-contract
-baseline.
+The repository now uses the `harness-upgrade-v0.1.1` baseline:
+
+- `v0.1`: documentation-contract upgrade for harness operating docs
+- `v0.1.1`: local bootstrap installer for reusing that baseline in another repo
 
 There is still no application implementation and no project-specific product
 contract baked into the repo by default. What changed is the strength of the
@@ -58,7 +60,9 @@ Current harness baseline artifacts:
 - completed roadmap: `plans/harness-upgrade/2026-05-08-harness-upgrade-roadmap-v0.1.md`
 - philosophy analysis: `plans/harness-upgrade/2026-05-08-harness-v0-philosophy-analysis.md`
 - upgrade changelog: `plans/harness-upgrade/CHANGELOG.md`
-- release tag: `harness-upgrade-v0.1`
+- release tags:
+  - `harness-upgrade-v0.1`
+  - `harness-upgrade-v0.1.1`
 
 These files explain how the repository moved from thin Harness `v0` guidance to
-a more explicit `v0.1` documentation contract baseline.
+documented `v0.1` contracts, then added `v0.1.1` bootstrap installation.

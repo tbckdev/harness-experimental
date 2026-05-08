@@ -62,7 +62,6 @@
 
 - Version scope: `v0.1.1` bootstrap installer for the current documentation baseline
 - Affected files:
-  - `README.md`
   - `docs/TEST_MATRIX.md`
   - `docs/stories/epics/E01-harness-bootstrap/US-001-install-harness-v0.1-into-target-repo.md`
   - `docs/stories/epics/E01-harness-bootstrap/INSTALLER_CONTRACT.md`
@@ -76,3 +75,17 @@
   - no new version bumps to existing core contract files
 - Migration follow-up required:
   - no immediate migration; future remote-source or protected-path merge modes can land as later stories
+
+## 2026-05-08 — Release Metadata Aligned
+
+- Version scope: align repository status text with shipped `v0.1.1` state
+- Affected files:
+  - `README.md`
+- Why change happened:
+  - reflect actual shipped baseline after installer release instead of leaving repo summary at `v0.1`
+- Friction removed:
+  - mismatch between current release tags and top-level repository status text
+- File-level version markers changed:
+  - no
+- Migration follow-up required:
+  - no
