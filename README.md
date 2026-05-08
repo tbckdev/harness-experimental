@@ -1,62 +1,54 @@
 # harness-experimental
 
+This repository is a documentation-first collaboration harness.
+
+It is not yet a product implementation repository. It exists to turn future raw
+specifications and prompts into:
+
+- living product truth
+- bounded story packets
+- explicit proof expectations
+- durable decision history
+- reusable harness improvements
+
 ## Current State
 
-This repository is in Harness v0.
+The repository is in Harness `v0` baseline with an upgrade plan under
+`plans/harness-upgrade/`.
 
-There is no application implementation and no baked-in product specification
-yet. The current work is the reusable project harness: the file structure,
-agent operating model, feature intake process, story templates, and validation
-expectations that help humans and agents turn a future user-provided spec into
-implementation work.
+There is no application implementation and no project-specific product contract
+baked into the repo by default.
 
-## Product Sources
+## Read First
 
-No product contract is currently defined.
+1. `AGENTS.md`
+2. `docs/HARNESS.md`
+3. `docs/HARNESS_LIFECYCLE.md`
+4. `docs/FEATURE_INTAKE.md`
+5. relevant product, story, test-matrix, and decision docs
 
-When a user provides a project specification, add or reference it as the input
-spec for the first buildout, then derive smaller living artifacts from it:
+## What This Repo Includes
 
-- `docs/product/`: current product contract files, created from the spec.
-- `docs/stories/`: story packets and backlog created from selected work.
-- `docs/TEST_MATRIX.md`: behavior-to-proof control panel.
-- `docs/decisions/`: durable decisions and tradeoffs.
+- harness operating rules
+- intake policy
+- generic architecture guidance
+- proof control rules
+- reusable templates for intake, stories, decisions, and validation
+- roadmap and planning artifacts for harness upgrades
 
-Do not keep a project-specific spec or product breakdown in this harness until
-a real project supplies one.
+## What This Repo Excludes
 
-## Harness Sources
+- product source code
+- framework scaffolding
+- fake scripts or fake CI
+- domain-specific product docs without real project input
 
-- `AGENTS.md`: agent entrypoint and operating rules.
-- `docs/HARNESS.md`: human-agent collaboration model.
-- `docs/FEATURE_INTAKE.md`: tiny, normal, and high-risk work classification.
-- `docs/ARCHITECTURE.md`: generic architecture discovery and boundary rules.
-- `docs/HARNESS_BACKLOG.md`: proposed harness improvements.
-- `docs/templates/`: reusable spec-intake, story, decision, and validation
-  templates.
+## Upgrade Planning
 
-## Repository Structure
+Current planning artifacts:
 
-```text
-project/
-  AGENTS.md
-  README.md
-  docs/
-    HARNESS.md
-    FEATURE_INTAKE.md
-    ARCHITECTURE.md
-    TEST_MATRIX.md
-    HARNESS_BACKLOG.md
-    product/
-    stories/
-    decisions/
-    templates/
-  scripts/
-    README.md
-```
+- `plans/harness-upgrade/2026-05-08-harness-upgrade-roadmap-v0.1.md`
+- `plans/harness-upgrade/2026-05-08-harness-v0-philosophy-analysis.md`
 
-## Working Rule
-
-Implementation prompts do not go straight to code. They first pass through
-feature intake, become story-sized work when needed, and then carry both
-product validation and harness maintenance expectations.
+These files describe how the harness should be strengthened before broader
+project execution grows.

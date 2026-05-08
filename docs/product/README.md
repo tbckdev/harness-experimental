@@ -1,21 +1,63 @@
 # Product Docs
 
-This directory is intentionally generic and mostly empty in Harness v0.
+This folder holds accepted product truth after intake.
 
-When a user provides a project spec, derive smaller product contract files here
-instead of keeping one large spec as the living plan. Name files by the product
-domains that actually exist in that spec, for example `overview.md`,
-`billing.md`, `workflows.md`, `permissions.md`, or `api-conventions.md`.
+The repository is still generic. Do not pre-create domain files just to fill
+space. Create product docs only when a real project specification or accepted
+change requires them.
 
-Do not create domain files before the spec just to fill the folder. Empty
-structure is healthier than fake product truth.
+## Purpose
+
+Product docs replace raw broad input as the living product contract.
+
+They should capture:
+
+- durable user-visible or system-visible behavior
+- stable domain terms
+- workflows and rules that future stories must follow
+- boundaries that stories should not reinterpret each time
+
+## Expected Taxonomy
+
+The exact shape depends on the project. Typical useful doc types include:
+
+- overview
+- personas or user types
+- domain model
+- workflows or journeys
+- rules or policies
+- interfaces or API contracts
+- operational constraints
+
+Not every project needs every type immediately.
+
+## Creation Rule
+
+Create product docs when:
+
+- raw spec has been accepted enough to derive living truth
+- multiple stories would otherwise keep rereading the same broad source
+- domain rules are stable enough to deserve durable names
+
+Do not create product docs when:
+
+- content is still only speculative
+- story packet is sufficient and no reusable truth exists yet
+- the repository would end up with generic filler rather than real product truth
 
 ## Update Rule
 
-When behavior changes:
+When accepted behavior changes:
 
-1. Update the affected product doc.
-2. Update or create the story packet.
-3. Update `docs/TEST_MATRIX.md`.
-4. Record a decision if the change affects architecture, scope, risk, or a
-   previously settled product rule.
+1. update the affected product doc
+2. update or create the relevant story packet
+3. update `docs/TEST_MATRIX.md`
+4. record decision if the change affects architecture, scope, proof policy, or
+   previously settled product rule
+
+## Relationship To Stories
+
+Product docs answer "what is true now."
+Story packets answer "what bounded change is being made now."
+
+Stories should link product docs rather than rewriting them.

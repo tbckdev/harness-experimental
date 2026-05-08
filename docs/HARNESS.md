@@ -1,176 +1,260 @@
 # Harness
 
-The project goal is to provide a reusable operating harness that lets humans and
-agents turn a future product spec into safe, validated work.
+Version: 0.1  
+Status: active
 
-The app is what users touch. The harness is what agents touch.
+This repository is a collaboration harness.
+
+It exists to help humans and agents turn incoming prompts or specifications into
+small, reviewable, and provable work without pretending the repository already
+contains product truth that does not yet exist.
+
+Harness v0 does not ship application code. It ships operating rules,
+templates, and control documents that define how a future project should be
+shaped before implementation expands.
 
 ## Mental Model
 
 ```text
-------------------+
-| Human intent    |
-+------------------+
-         |
-         v
-+------------------+
-| Feature intake   |
-+------------------+
-         |
-         v
-+------------------+
-| Story packet     |
-+------------------+
-         |
-         v
-+------------------+
-| Agent work loop  |
-+------------------+
-         |
-         v
-+------------------+
-| Product delta    |
-+------------------+
-         |
-         v
-+------------------+
-| Validation proof |
-+------------------+
-         |
-         v
-+------------------+
-| Harness delta    |
-+------------------+
-         |
-         v
-+------------------+
-| Next intent      |
-+------------------+
+human intent or raw spec
+  -> intake classification
+  -> living product truth
+  -> story or high-risk packet
+  -> proof expectation
+  -> execution
+  -> validation evidence
+  -> harness delta when friction is discovered
 ```
 
-Every task has two possible outputs:
+Every task should improve at least one of these surfaces:
 
-1. Product delta: app code, tests, API shape, data model, or product docs.
-2. Harness delta: docs, templates, validation expectations, backlog items, or
-   decision records that make the next task easier.
+1. Product delta: product docs, story packets, implementation, proof, decisions.
+2. Harness delta: workflow rules, templates, validation controls, glossary,
+   roadmap, or backlog proposals.
 
 ## Harness v0 Scope
 
 Harness v0 includes:
 
-- Agent entrypoint.
-- Empty product documentation structure.
-- Feature intake and risk lanes.
-- Story templates.
-- Decision log template.
-- Validation report template.
-- Test matrix placeholder.
-- Harness growth backlog.
+- repository entrypoint rules in `AGENTS.md`
+- collaboration and operating guidance in `docs/HARNESS.md`
+- intake and risk-lane policy in `docs/FEATURE_INTAKE.md`
+- generic architecture rules in `docs/ARCHITECTURE.md`
+- proof tracking policy in `docs/TEST_MATRIX.md`
+- reusable templates under `docs/templates/`
+- harness growth tracking in `docs/HARNESS_BACKLOG.md`
+- roadmap and planning artifacts under `plans/harness-upgrade/`
 
 Harness v0 deliberately excludes:
 
-- A project-specific `SPEC.md`.
-- Pre-sliced product domains.
-- A locked application stack.
-- App source scaffolding.
-- Package scripts.
-- Test runner config.
-- CI workflows.
-- Database migrations or infrastructure.
-
-Those should arrive only when a selected story needs them.
+- project-specific source code
+- preselected framework or stack
+- pre-created domain-specific product documents
+- fake automation, fake scripts, or fake validation commands
+- monolithic living specs that replace product docs and story packets
 
 ## Source Hierarchy
 
-```text
-User-provided spec or prompt
-  input material for first buildout or future changes
-
-docs/product/*
-  current product contract derived from accepted input
-
-docs/stories/*
-  story-sized work packets and historical evidence
-
-docs/TEST_MATRIX.md
-  behavior-to-proof control panel
-
-docs/decisions/*
-  why the contract changed
-```
-
-Before implementation, product docs describe intent. After implementation,
-product docs plus executable tests become the living contract.
-
-## Spec Lifecycle
-
-Harness v0 starts without a tracked project spec. When the human provides a
-specification, treat it as input material, not as a permanent operating manual.
-Use it to populate product docs, story packets, architecture decisions, and
-validation expectations during the first buildout.
-
-After the specification has been decomposed, do not keep extending it as the
-living product plan. Ongoing work should update the smaller product docs,
-stories, test matrix, and decision records.
-
-Ongoing work should enter the harness as one of these input types:
-
-- New spec: a project specification that needs to become product docs and
-  initial story candidates.
-- Spec slice: a selected behavior from the provided spec.
-- Change request: a bounded behavior change, bug fix, or product refinement.
-- New initiative: a larger product area that needs multiple stories.
-- Maintenance request: dependency, architecture, performance, security, or
-  operational work.
-- Harness improvement: a process, template, proof, or agent-instruction change.
-
-The spec-to-work loop is:
+The repository should be read from highest current truth to lowest context.
 
 ```text
-human intent or supplied spec
-  -> classify input type
-  -> update or create product contract
-  -> create story packet or initiative notes when needed
-  -> define validation proof
-  -> implement or document the blocker
-  -> update product docs, stories, test matrix, and decisions
-  -> capture harness friction
+user prompt or user-provided spec
+  raw intent and source material
+
+accepted product docs under docs/product/
+  current product contract after intake
+
+story packets under docs/stories/
+  scoped execution contracts and historical work packets
+
+proof control under docs/TEST_MATRIX.md
+  behavior-to-proof expectations and status
+
+validation reports
+  observed evidence for completed or reviewed work
+
+decision records under docs/decisions/
+  why important contract or workflow choices changed
+
+harness backlog
+  unresolved collaboration-system gaps
 ```
 
-Large product areas should use scoped initiative notes instead of a second
-monolithic specification. An initiative should explain the goal, affected
-product docs, candidate stories, validation shape, open decisions, and exit
-criteria. If initiative work becomes a repeated pattern, add a template or
-proposal to `docs/HARNESS_BACKLOG.md`.
+Rules:
+
+- raw prompt or spec is input material, not long-term living truth
+- accepted product behavior should move into `docs/product/`
+- execution details should move into story packets, not stay embedded in broad specs
+- proof expectations should be visible in `docs/TEST_MATRIX.md`
+- material workflow or contract changes should leave durable trace in decisions,
+  changelog, migration notes, or version markers
+
+## Canonical Lifecycle
+
+Use `docs/HARNESS_LIFECYCLE.md` as the canonical artifact-flow contract.
+
+That file defines:
+
+- required stages
+- inputs and outputs for each stage
+- stop conditions
+- promotion criteria
+- rollback paths when work is not ready
+
+This file is the entrypoint. `docs/HARNESS_LIFECYCLE.md` is the detailed flow.
+
+## Intake and Routing
+
+All work begins with classification in `docs/FEATURE_INTAKE.md`.
+
+At minimum, classify:
+
+- input type
+- risk lane
+- target artifact
+- whether implementation is allowed yet
+
+Do not skip classification for non-trivial work.
+
+## Readiness Gates
+
+Use these gates at a high level before downstream work begins.
+
+### Gate 1: Intake Readiness
+
+Ready when:
+
+- input type is identified
+- current source of truth is known
+- target artifact is known
+- obvious ambiguities are named rather than hidden
+
+Not ready when:
+
+- prompt mixes multiple work items and needs splitting
+- accepted product truth is missing but story execution is being forced anyway
+
+### Gate 2: Story Readiness
+
+Ready when:
+
+- product truth exists or the story explicitly includes product-doc update as its first contract step
+- scope is bounded
+- non-goals and dependencies are visible
+- expected proof is linked or planned
+
+Not ready when:
+
+- another agent would need to guess what the story is allowed to change
+- proof expectations are absent
+
+### Gate 3: Execution Readiness
+
+Ready when:
+
+- lane is correct
+- packet shape matches risk
+- traceability links exist
+- proof expectations are attached
+
+Not ready when:
+
+- work is high-risk but lacks high-risk packet structure
+- core docs contradict each other
+
+### Gate 4: Completion Readiness
+
+Ready when:
+
+- changed files align with source contract
+- test matrix reflects accepted behavior status
+- validation evidence is captured or the lack of executable proof is explicitly documented
+- new harness friction is captured as direct improvement or backlog item
+
+Not ready when:
+
+- completion claim depends on unwritten assumptions
+- validation notes cannot be traced back to packet and proof expectations
+
+## Traceability Expectations
+
+Minimum traceability for non-trivial work:
+
+- story packet links relevant product docs
+- story packet links relevant proof rows or planned rows
+- validation report links story packet and proof rows
+- decision record links affected contract surfaces when meaningful
+- backlog item links discovered friction when the fix is deferred
+
+Use `docs/TRACEABILITY.md` once that file exists for the detailed rule set.
 
 ## Growth Rule
 
-The harness grows from friction.
+The harness grows from real friction, not from fantasy completeness.
 
-When an agent is confused, repeats manual reasoning, needs a new validation
-command, discovers a missing rule, or sees a recurring failure pattern, it must
-either improve the harness directly or add a proposal to `HARNESS_BACKLOG.md`.
+Add or change harness rules when one of these is true:
 
-## Future Validation Ladder
+- humans or agents repeatedly have to infer missing routing logic
+- validation expectations are unclear or inconsistent
+- templates fail to support clean handoff
+- proof rows cannot describe real work clearly
+- repeated gaps appear in multiple stories or reviews
 
-No validation scripts exist yet. When implementation begins, the expected ladder
-is:
+When the fix is clear and small, improve the harness directly.
+When the fix is real but not yet settled, record it in `docs/HARNESS_BACKLOG.md`.
 
-```text
-validate:quick
-  format, lint, typecheck, unit tests, architecture check
+## Immediate Update vs Backlog Later
 
-test:integration
-  backend, database, provider, or service checks as the stack requires
+Improve the harness immediately when:
 
-test:e2e
-  user-visible end-to-end flows
+- current task cannot be completed honestly without the change
+- the missing rule would make the current work misleading
+- multiple active documents would contradict each other without the update
 
-test:platform
-  shell, mobile, desktop, or deployment smoke checks as the stack requires
+Use backlog later when:
 
-test:release
-  full suite, log checks, and performance smoke
-```
+- the gap is real but not blocking the current task
+- the solution still needs debate
+- the issue is structural and should not be guessed during unrelated work
 
-Agents must not claim these commands pass until they exist and have been run.
+## Validation Ladder
+
+The right proof level depends on what the repository actually contains.
+
+Possible proof levels:
+
+- document review
+- unit proof
+- integration proof
+- end-to-end proof
+- platform proof
+
+Harness v0 often stops at document-review proof because no application surface
+exists yet. Do not fake higher-level proof.
+
+If a later project introduces executable surfaces, update the test matrix and
+story packets so proof expectations match the real stack.
+
+## Versioning and Migration
+
+Use `docs/VERSIONING.md` for version-marker, changelog, and migration-note
+rules.
+
+When a template or operating doc changes shape materially:
+
+- check whether the file version should bump
+- check whether a repository changelog entry is needed
+- add local migration note if readers of that file need transition guidance
+- add decision record if the change alters workflow rationale materially
+
+## Working Rule
+
+Default behavior:
+
+- classify first
+- update current truth before downstream detail
+- prefer bounded packets over giant narrative docs
+- prefer explicit proof expectation over implied confidence
+- preserve history through decisions, validation reports, and changelog traces
+
+The harness succeeds when future sessions need less guessing than current ones.
