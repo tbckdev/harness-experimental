@@ -1,44 +1,40 @@
 # Exec Plan
 
+Version: 0.1  
+Status: active
+
 ## Goal
 
-What outcome are we trying to produce?
+State the concrete outcome of this packet.
 
 ## Scope
 
-In scope:
-
-- Item.
-
-Out of scope:
-
-- Item.
+Describe what is included in this packet and what is intentionally deferred.
 
 ## Risk Classification
 
-Risk flags:
-
-- Flag.
-
-Hard gates:
-
-- Gate.
+Explain why this packet is high-risk.
 
 ## Work Phases
 
-1. Discovery.
-2. Design.
-3. Validation planning.
-4. Implementation.
-5. Verification.
-6. Harness update.
+Break work into phases.
+
+For each phase, describe:
+
+- goal
+- entry criteria
+- exit criteria
+- main risk
+- expected proof signal
 
 ## Stop Conditions
 
-Pause for human confirmation if:
+List conditions that should halt execution and force reassessment.
 
-- Product behavior is ambiguous.
-- Data migration or deletion risk appears.
-- Validation requirements need to be weakened.
-- Architecture direction changes.
+## Rollback Plan
 
+Describe how damage is contained if implementation or contract direction is wrong.
+
+## Go / No-Go Checkpoint
+
+Describe who or what should determine whether to continue after early high-risk steps.

@@ -1,33 +1,28 @@
 # Validation
 
+Version: 0.1  
+Status: active
+
 ## Proof Strategy
 
-Explain what must pass before the story is done.
+Describe the highest honest proof shape expected for this packet.
 
 ## Test Plan
 
-| Layer | Cases |
-| --- | --- |
-| Unit | |
-| Integration | |
-| E2E | |
-| Platform | |
-| Performance | |
-| Logs/Audit | |
+List validation layers and what each one should prove.
 
-## Fixtures
+## Fixtures or Environment Needs
 
-List deterministic users, accounts, records, provider responses, or other
-fixtures needed for repeatable proof.
+Describe data, environment, or setup needs if relevant.
 
 ## Commands
 
-Add commands after scripts exist.
+List exact commands if they exist. Otherwise explain non-command review method.
 
-```text
-TBD
-```
+## Acceptance Evidence Map
 
-## Acceptance Evidence
+Map each major acceptance area to evidence source.
 
-Add results after verification.
+## Freshness and Revalidation Trigger
+
+Describe what later change would make current evidence stale and require revalidation.

@@ -1,33 +1,118 @@
 # Test Matrix
 
-This file maps product behavior to proof.
+Version: 0.1  
+Status: active
 
-No product behavior has been defined or implemented yet. Do not mark a row
-implemented until tests or validation evidence exist.
+This file maps accepted product or harness behavior to proof expectations.
+
+The matrix is a control plane, not only a list. It should help reviewers answer:
+
+- what behavior exists
+- where that behavior is defined
+- what proof is expected
+- who owns the proof surface
+- whether evidence is fresh enough to trust
 
 ## Status Values
 
 | Status | Meaning |
 | --- | --- |
-| planned | Accepted as intended behavior, not implemented |
-| in_progress | Actively being built |
-| implemented | Implemented and proof exists |
-| changed | Contract changed after earlier implementation |
-| retired | No longer part of the product contract |
+| planned | Accepted as intended behavior, not yet implemented or not yet proven |
+| in_progress | Actively being built or validated |
+| implemented | Implemented and current proof exists |
+| changed | Contract changed after earlier implementation or proof |
+| retired | No longer part of the accepted contract |
+
+## Freshness Values
+
+| Freshness | Meaning |
+| --- | --- |
+| fresh | Evidence matches current accepted behavior as far as known |
+| stale | Evidence predates later contract or implementation changes |
+| not_yet_proven | Behavior accepted but no current evidence exists |
+| historical_only | Evidence retained for history, not current trust |
+
+## Proof Types
+
+Use the lightest honest proof that matches repository reality.
+
+- `document_review`: review of docs, contracts, and traceability only
+- `unit`: pure logic proof
+- `integration`: backend/provider/data boundary proof
+- `e2e`: user-visible journey proof
+- `platform`: runtime, shell, deployment, or environment proof
+- `mixed`: more than one proof type is required
 
 ## Matrix
 
-| Story | Contract | Unit | Integration | E2E | Platform | Status | Evidence |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| TBD | Add rows when story packets are created | no | no | no | no | planned | none |
+| Behavior ID | Behavior | Source Doc | Story | Risk Lane | Proof Owner | Proof Type Required | Current Proof | Freshness | Related Decision | Notes / Gaps |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+Add rows only when accepted product or harness behavior exists and can be linked
+to a real source doc or operating doc.
+
+## Row Creation Rules
+
+Create or update a row when:
+
+- accepted behavior enters product docs
+- a story packet introduces or changes accepted behavior
+- a harness rule becomes important enough to need proof visibility
+- a previously implicit contract now needs explicit validation ownership
+
+Do not create rows for vague aspirations that have not been accepted as contract.
+
+## Row Update Rules
+
+### Move to `planned`
+
+Use when behavior is accepted but proof does not exist yet.
+
+### Move to `in_progress`
+
+Use when behavior is actively being implemented, validated, or revalidated after change.
+
+### Move to `implemented`
+
+Use only when current evidence exists and is linked through validation or test surface.
+
+### Move to `changed`
+
+Use when accepted behavior changed after earlier evidence. This status warns that
+older proof may now be stale.
+
+### Move to `retired`
+
+Use when behavior is no longer part of accepted truth.
 
 ## Evidence Rules
 
-- Unit proof covers pure domain and application rules.
-- Integration proof covers backend enforcement, data integrity, provider
-  behavior, jobs, or service contracts.
-- E2E proof covers user-visible browser flows.
-- Platform proof covers only shell, deployment, mobile, desktop, or runtime
-  behavior that cannot be proven in lower layers.
-- A story can be implemented without every proof column if the story packet
-  explains why.
+- Unit proof covers pure rules and deterministic application logic.
+- Integration proof covers boundaries such as storage, provider contracts, jobs,
+  or service contracts.
+- End-to-end proof covers visible user or system journeys across layers.
+- Platform proof covers runtime or shell behavior that lower-level tests cannot prove.
+- Document review is honest only when executable surface does not yet exist or
+  when the behavior itself is documentary/governance in nature.
+
+## Freshness Rules
+
+Set freshness to `stale` when:
+
+- behavior changed after evidence was captured
+- linked story or product doc changed materially
+- proof environment or assumptions no longer match
+
+Set freshness to `not_yet_proven` when:
+
+- behavior is accepted but no current evidence exists
+
+## Review Questions
+
+Before trusting a row, ask:
+
+1. Is the source doc the current source of truth?
+2. Does the story link still make sense?
+3. Is the proof type honest for the repository state?
+4. Is evidence still fresh?
+5. Do notes explain the biggest remaining gap?
