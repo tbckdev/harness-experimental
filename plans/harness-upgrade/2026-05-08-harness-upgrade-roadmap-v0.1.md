@@ -1,10 +1,12 @@
 # Harness Upgrade Roadmap v0.1
 
-Status: proposed  
+Status: completed  
 Date: 2026-05-08  
 Scope: repository harness only  
 Owner: repository maintainers and future human/agent sessions  
 Review output: roadmap notes, changelog entries, and migration notes when needed
+
+Completion note: Roadmap executed and merged to `main` via tag `harness-upgrade-v0.1`.
 
 ## File Location
 
@@ -18,6 +20,22 @@ Review output: roadmap notes, changelog entries, and migration notes when needed
 This roadmap should be read with the philosophy analysis. The analysis explains
 why the harness behaves as a contract-first, proof-oriented operating system.
 This roadmap translates that philosophy into concrete upgrade work.
+
+## Execution Status
+
+- Planning baseline commit: `9cf66e0`
+- Upgrade implementation commit: `3959da3`
+- Merge to `main`: `edc5fe1`
+- Release tag: `harness-upgrade-v0.1`
+- Overall roadmap state: completed
+
+Rule for future agents:
+
+- Do not reopen or re-run this roadmap as pending work.
+- Treat this file as historical planning and completion evidence for the
+  `harness-upgrade-v0.1` release.
+- Create a new roadmap file for later upgrade phases or corrective work instead
+  of mutating this one back into active planning state.
 
 ## Purpose
 
